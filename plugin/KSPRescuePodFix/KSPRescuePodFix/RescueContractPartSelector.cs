@@ -50,12 +50,12 @@ namespace SSTUTools
             contract.Save(contractData);
 
             // if partID already assigned, contract is already accepted/generated, as the part already exists
-            int partID = int.Parse(contractData.GetValue("partID"));
+            int partID = contractData.HasValue("partID")?  int.Parse(contractData.GetValue("partID")) : 0;
             if (partID != 0) { return; }
 
             // only care about kerbal-recovery contracts where they spawn in the pod
             // which from experimentation, is type == 1
-            int type = int.Parse(contractData.GetValue("recoveryType"));
+            int type = contractData.HasValue("recoveryType")? int.Parse(contractData.GetValue("recoveryType")) : 0;
             if (type != 1) { return; }
 
             string partName = contractData.GetValue("partName");
