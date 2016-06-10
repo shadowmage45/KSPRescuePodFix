@@ -47,24 +47,31 @@ namespace SSTUTools
         public void OnContractOffered(Contract contract)
         {
             ConfigNode contractData = new ConfigNode("CONTRACT");
-            contract.Save(contractData);
-
-            // if partID already assigned, contract is already accepted/generated, as the part already exists
-            int partID = contractData.HasValue("partID")?  int.Parse(contractData.GetValue("partID")) : 0;
-            if (partID != 0) { return; }
-
-            // only care about kerbal-recovery contracts where they spawn in the pod
-            // which from experimentation, is type == 1
-            int type = contractData.HasValue("recoveryType")? int.Parse(contractData.GetValue("recoveryType")) : 0;
-            if (type != 1) { return; }
-
-            string partName = contractData.GetValue("partName");
-            if (!isValidRecoveryPod(partName))
+            try
             {
-                string newPart = getRandomRecoveyPod();
-                MonoBehaviour.print("Rescue Pod Fix - Invalid rescue pod detected: " + partName + ", replaced with: " + newPart);
-                contractData.SetValue("partName", newPart, true);
-                Contract.Load(contract, contractData);
+                contract.Save(contractData);
+
+                // if partID already assigned, contract is already accepted/generated, as the part already exists
+                int partID = contractData.HasValue("partID") ? int.Parse(contractData.GetValue("partID")) : 0;
+                if (partID != 0) { return; }
+
+                // only care about kerbal-recovery contracts where they spawn in the pod
+                // which from experimentation, is type == 1
+                int type = contractData.HasValue("recoveryType") ? int.Parse(contractData.GetValue("recoveryType")) : 0;
+                if (type != 1) { return; }
+
+                string partName = contractData.GetValue("partName");
+                if (!isValidRecoveryPod(partName))
+                {
+                    string newPart = getRandomRecoveyPod();
+                    MonoBehaviour.print("Rescue Pod Fix - Invalid rescue pod detected: " + partName + ", replaced with: " + newPart);
+                    contractData.SetValue("partName", newPart, true);
+                    Contract.Load(contract, contractData);
+                }
+            }
+            catch (Exception e)
+            {
+                MonoBehaviour.print(e.Message);
             }
         }
 
