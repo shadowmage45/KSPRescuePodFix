@@ -42,15 +42,6 @@
     <Reference Include="Assembly-UnityScript-firstpass">
       <HintPath>libs\Assembly-UnityScript-firstpass.dll</HintPath>
     </Reference>
-    <Reference Include="KSPAssets">
-      <HintPath>libs\KSPAssets.dll</HintPath>
-    </Reference>
-    <Reference Include="KSPCore">
-      <HintPath>libs\KSPCore.dll</HintPath>
-    </Reference>
-    <Reference Include="KSPUtil">
-      <HintPath>libs\KSPUtil.dll</HintPath>
-    </Reference>
     <Reference Include="MiscUtil-r285">
       <HintPath>libs\MiscUtil-r285.dll</HintPath>
     </Reference>

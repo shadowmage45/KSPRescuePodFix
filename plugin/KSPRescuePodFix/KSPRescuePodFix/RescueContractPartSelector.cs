@@ -61,7 +61,7 @@ namespace SSTUTools
                 if (type != 1) { return; }
 
                 string partName = contractData.GetValue("partName");
-                if (!isValidRecoveryPod(partName))
+                if (!string.IsNullOrEmpty(partName) && !isValidRecoveryPod(partName))
                 {
                     string newPart = getRandomRecoveyPod();
                     MonoBehaviour.print("Rescue Pod Fix - Invalid rescue pod detected: " + partName + ", replaced with: " + newPart);
