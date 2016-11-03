@@ -8,7 +8,6 @@ namespace SSTUTools
     [KSPAddon(KSPAddon.Startup.Instantly | KSPAddon.Startup.EveryScene, true)]
     public class RescueContractPartSelector : MonoBehaviour
     {
-
         private static string[] approvedPodTypes;
         private static System.Random rng;
 
@@ -57,8 +56,12 @@ namespace SSTUTools
 
                 // only care about kerbal-recovery contracts where they spawn in the pod
                 // which from experimentation, is type == 1
+                // type 0 = ?
+                // type 1 = Rescue
+                // type 2 = ?
+                // type 3 = RecoverAsset
                 int type = contractData.HasValue("recoveryType") ? int.Parse(contractData.GetValue("recoveryType")) : 0;
-                if (type != 1) { return; }
+                if (type != 1 && type != 3) { return; }
 
                 string partName = contractData.GetValue("partName");
                 if (!string.IsNullOrEmpty(partName) && !isValidRecoveryPod(partName))
