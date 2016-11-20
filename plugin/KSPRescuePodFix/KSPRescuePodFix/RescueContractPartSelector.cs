@@ -55,11 +55,11 @@ namespace SSTUTools
                 if (partID != 0) { return; }
 
                 // only care about kerbal-recovery contracts where they spawn in the pod
-                // which from experimentation, is type == 1
-                // type 0 = ?
-                // type 1 = Rescue
-                // type 2 = ?
-                // type 3 = RecoverAsset
+                // which from experimentation, is type == 1 or type == 3
+                // type 0 = Invalid
+                // type 1 = Kerbal
+                // type 2 = Part
+                // type 3 = Kerbal+Pod
                 int type = contractData.HasValue("recoveryType") ? int.Parse(contractData.GetValue("recoveryType")) : 0;
                 if (type != 1 && type != 3) { return; }
 
@@ -67,7 +67,7 @@ namespace SSTUTools
                 if (!string.IsNullOrEmpty(partName) && !isValidRecoveryPod(partName))
                 {
                     string newPart = getRandomRecoveyPod();
-                    MonoBehaviour.print("Rescue Pod Fix - Invalid rescue pod detected: " + partName + ", replaced with: " + newPart);
+                    MonoBehaviour.print("Rescue Pod Fix - Invalid rescue pod detected: " + partName + ", replaced with: " + newPart+" for contract type: "+type);
                     contractData.SetValue("partName", newPart, true);
                     Contract.Load(contract, contractData);
                 }
