@@ -88,7 +88,8 @@ namespace SSTUTools
         {
             if (approvedPodTypes.Length <= 0) { return "landerCabinSmall"; }
             int chosen = rng.Next(approvedPodTypes.Length);
-            return approvedPodTypes[chosen];
+            string rawValue = approvedPodTypes[chosen];
+            return rawValue.Replace('_', '.');
         }
 
     }
