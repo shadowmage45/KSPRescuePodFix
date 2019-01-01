@@ -1,31 +1,31 @@
 {
 	"NAME":"KSPRescuePodFix",
 	"URL":"http://ksp-avc.cybutek.net/version.php?id=391",
-	"DOWNLOAD":"https://github.com/shadowmage45/KSPRescuePodFix/releases/tag/1.4.2.12",
-	"CHANGE_LOG_URL":"https://github.com/shadowmage45/KSPRescuePodFix/releases/tag/1.4.2.12",
+	"DOWNLOAD":"https://github.com/shadowmage45/KSPRescuePodFix/releases/tag/1.5.3.13",
+	"CHANGE_LOG_URL":"https://github.com/shadowmage45/KSPRescuePodFix/releases/tag/1.5.3.13",
 	"VERSION":
 	{
 		"MAJOR":1,
-		"MINOR":4,
-		"PATCH":2,
-		"BUILD":12
+		"MINOR":5,
+		"PATCH":3,
+		"BUILD":13
 	},
 	"KSP_VERSION":
 	{
 		"MAJOR":1,
-		"MINOR":5,
+		"MINOR":6,
 		"PATCH":0
 	},
 	"KSP_VERSION_MIN":
 	{
 		"MAJOR":1,
-		"MINOR":5,
+		"MINOR":6,
 		"PATCH":0
 	},
 	"KSP_VERSION_MAX":
 	{
 		"MAJOR":1,
-		"MINOR":5,
-		"PATCH":0
+		"MINOR":6,
+		"PATCH":9
 	}
 }
